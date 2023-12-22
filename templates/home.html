@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+<div class="">
+    {%for song in album%}
+
+    <div class="d-flex flex-wrap justify-content-center m-2">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{song.name}}</h5>
+            <p >{{song.author.name}}</p>
+            <p>{{song.release_date}}</p>
+            <small>Rating: {{song.rating}}</small>
+            
+            <a href="{% url 'edit_album' song.id %}" class='btn btn-warning' >Edit</a>
+        <a href="{% url 'delete_album' song.id %}" class='btn btn-danger' >Delete</a>
+          </div>
+        </div>
+
+    {% endfor %}
+    </div>
+
+{% endblock  %}
